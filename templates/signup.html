@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title> Login </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<form action="" method="post">
+<input type="text" placeholder="username" name="username" value="{{request.form.username}}">
+<input type="password" placeholder="password" name="password" value="{{request.form.password}}">
+<input type="submit" value="Signup">
+</form>
+
+{% if error %}
+<p class="error"> {{error}} </p>
+{% endif %}
+
+</body>
+</html>
