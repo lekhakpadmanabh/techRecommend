@@ -4,7 +4,7 @@ import pymongo
 from hn import get_all
 from bson.objectid import ObjectId
 from bcrypt import hashpw, gensalt
-
+import nltk
 from nltk.corpus import stopwords
 from nltk import stem, word_tokenize
 import string

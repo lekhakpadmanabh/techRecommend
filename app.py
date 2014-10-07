@@ -13,6 +13,9 @@ from db import (verify_credentials, add_new_user, get_user_id, predict, get_unla
 from functools import wraps
 from bson.objectid import ObjectId
 
+import nltk
+nltk.data.path.append('./nltk_data/')
+
 def login_required(f):
     @wraps(f)
     def wrap(*args,**kwargs):
