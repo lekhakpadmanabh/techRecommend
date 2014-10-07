@@ -144,7 +144,6 @@ def predict(title,user_id):
     response = {}
     k=1 #smoothener
     tokens = preprocess(title)
-    print tokens
     data = u_coll.find_one({'_id': user_id},
                            {'total_pos':1,
                             'total_neg':1,
@@ -163,9 +162,7 @@ def predict(title,user_id):
     response['tp'] = data['total_pos']
     response['tn'] = data['total_neg']
     for token in tokens:
-        print
         if token in data['bag_of_words'].keys():
-            print token
             token_pos_count = data['bag_of_words'][token]["pos"]
             token_neg_count = data['bag_of_words'][token]["neg"]
             response[token] = data['bag_of_words'][token]
@@ -187,7 +184,6 @@ def predict(title,user_id):
 def train(username):
     user_id = get_user_id(username)
     for el in get_unlabeled_stories(user_id):
-        print el['title']
         while True:
             ans = raw_input("Yay or nay?: ")
             if ans=='y' or ans=='n':

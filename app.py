@@ -27,13 +27,6 @@ def login_required(f):
     return wrap
 
 
-try:
-    conn=pymongo.MongoClient()
-except pymongo.errors.ConnectionFailure, e:
-    print "Could not connect to MongoDB: {}".format(e)
-
-
-
 app = Flask(__name__)
 
 app.secret_key = "random keygen" #user system.environ
