@@ -2,11 +2,6 @@ from bs4 import BeautifulSoup as bs
 import re
 import requests
 
-
-
-
-
-
 def get_stories(soup): 
     stories = []
     title_rows = soup.find_all('td',class_='title')
@@ -47,10 +42,10 @@ def get_metadata(soup):
     meta_rows = soup.find_all('td',class_='subtext')
     return [parse_metadata(x) for x in meta_rows ]
 
-def get_all():
+def get_all(address='http://news.ycombinator.com'):
     headers = {'User-agent': 'Mozilla/5.0 (Windows NT 5.1; rv:31.0) Gecko/20100101 Firefox/31.0'}
     s = requests.Session()
-    r = s.get('http://news.ycombinator.com',headers=headers)
+    r = s.get(address,headers=headers)
     soup = bs(r.text)
     megalist =[]
     stories = get_stories(soup)

@@ -13,13 +13,15 @@ nltk.data.path.append('./nltk_data/')
 porter = stem.porter.PorterStemmer()
 stopset = set(stopwords.words('english'))
 
+
+
 try:
-    conn=pymongo.MongoClient()
+    conn=pymongo.MongoClient(os.getenv('MONGODB_URL'))
 except pymongo.errors.ConnectionFailure, e:
     print "Could not connect to MongoDB: {}".format(e)
 
 #database/collections init
-db = conn.hnDB
+db = conn.get_default_database()
 u_coll = db.users
 s_coll = db.stories
 

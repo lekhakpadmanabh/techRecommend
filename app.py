@@ -32,10 +32,7 @@ try:
 except pymongo.errors.ConnectionFailure, e:
     print "Could not connect to MongoDB: {}".format(e)
 
-#these three shouldn't be necessary if already instantiated in db.py
-db = conn.hnDB
-u_coll = db.users
-s_coll = db.stories
+
 
 app = Flask(__name__)
 
