@@ -65,12 +65,7 @@ def liked():
 @app.route('/cluster',methods=['GET','POST'])
 @login_required
 def cluster():
-    uid = get_user_id(session['current_user'])
-    unlabeled_stories = get_unlabeled_stories(uid)
-    for ul in unlabeled_stories:
-        ul['_id'] = str(ul['_id'])
-        ul['label'] = predict(ul['title'],uid)
-    return render_template('cluster.html',stories=unlabeled_stories)
+    return render_template('clusters.html')
 
 @app.route('/login', methods=['GET','POST'])
 def login():
