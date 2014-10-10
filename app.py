@@ -37,6 +37,7 @@ app.secret_key = "random keygen" #user system.environ
 @login_required
 def index():
     uid = get_user_id(session['current_user'])
+    print uid, type(uid)
     if request.method == "POST":
         ids = [(ObjectId(k),request.json[k]) for k in request.json.keys()]
         for sample in ids:
