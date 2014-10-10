@@ -12,7 +12,7 @@ from flask import (Flask,
 from db import (verify_credentials, add_new_user, get_user_id, predict, get_unlabeled_stories,label_story,get_liked_stories)
 from functools import wraps
 from bson.objectid import ObjectId
-
+import os
 import nltk
 nltk.data.path.append('./nltk_data/')
 
@@ -29,7 +29,7 @@ def login_required(f):
 
 app = Flask(__name__)
 
-app.secret_key = "random keygen" #user system.environ
+app.secret_key = os.getenv('FLASK_SECRET_KEY') #user system.environ
 
 
 
